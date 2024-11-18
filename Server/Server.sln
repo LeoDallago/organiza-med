@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{FEE3F78B-CAE4-4D80-A3F1-43CFBB9C4A9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Dominio", "OrganizaMed.Dominio\OrganizaMed.Dominio.csproj", "{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{D4BF2507-AF56-4DD0-B9BA-9D91D0EB8A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Testes", "OrganizaMed.Testes\OrganizaMed.Testes.csproj", "{D74EEB36-672F-43AA-93CC-5FCB244DB2FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{529C446A-0A79-4E81-86C5-990FAFD18FE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizaMed.Infra", "OrganizaMed.Infra\OrganizaMed.Infra.csproj", "{477EF746-0FA4-432A-919A-A1D6FCA4DADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C} = {FEE3F78B-CAE4-4D80-A3F1-43CFBB9C4A9E}
+		{D74EEB36-672F-43AA-93CC-5FCB244DB2FF} = {D4BF2507-AF56-4DD0-B9BA-9D91D0EB8A0F}
+		{477EF746-0FA4-432A-919A-A1D6FCA4DADA} = {529C446A-0A79-4E81-86C5-990FAFD18FE4}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BB40A5-32A0-4C6B-A3CF-4200F5EE513C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74EEB36-672F-43AA-93CC-5FCB244DB2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74EEB36-672F-43AA-93CC-5FCB244DB2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74EEB36-672F-43AA-93CC-5FCB244DB2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74EEB36-672F-43AA-93CC-5FCB244DB2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477EF746-0FA4-432A-919A-A1D6FCA4DADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477EF746-0FA4-432A-919A-A1D6FCA4DADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477EF746-0FA4-432A-919A-A1D6FCA4DADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477EF746-0FA4-432A-919A-A1D6FCA4DADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
