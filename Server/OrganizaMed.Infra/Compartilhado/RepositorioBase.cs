@@ -14,6 +14,13 @@ public class RepositorioBase<TEntidade> where TEntidade : Entidade
         this.registros = dbContext.Set<TEntidade>();
     }
 
+    public bool Inserir(TEntidade registro)
+    {
+        registros.AddAsync(registro);
+        dbContext.SaveChanges();
+        return true;
+    }
+    
     public async Task<bool> InserirAsync(TEntidade registro)
     {
         await registros.AddAsync(registro);

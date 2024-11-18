@@ -21,9 +21,16 @@ public class RepositorioMedicoOrm : RepositorioBase<Medico>, IRepositorioMedico
         throw new NotImplementedException();
     }
 
-
+    
     public override Medico SelecionarPorId(Guid id)
     {
         return  registros.SingleOrDefault(x =>x.Id == id);
+    }
+    
+    public async Task<List<Medico>> Filtrar(Func<Medico, bool> predicate)
+    {
+        var medicos = await registros.ToListAsync();
+        
+        return medicos.Where(predicate).ToList();
     }
 }
