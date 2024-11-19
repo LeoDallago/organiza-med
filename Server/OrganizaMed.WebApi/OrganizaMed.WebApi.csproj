@@ -16,12 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Config\Mapping\" />
-      <Folder Include="Controllers\" />
-      <Folder Include="ViewModels\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\OrganizaMed.Aplicacao\OrganizaMed.Aplicacao.csproj" />
       <ProjectReference Include="..\OrganizaMed.Dominio\OrganizaMed.Dominio.csproj" />
       <ProjectReference Include="..\OrganizaMed.Infra\OrganizaMed.Infra.csproj" />

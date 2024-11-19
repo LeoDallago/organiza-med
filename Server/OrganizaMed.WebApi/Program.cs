@@ -1,8 +1,11 @@
 using Microsoft.OpenApi.Models;
+using OrganizaMed.WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.ConfigureDbContext(builder.Configuration);
+builder.Services.ConfigureServices();
+builder.Services.ConfigureAutoMapper();
 
 builder.Services.AddControllers();
 

@@ -5,7 +5,6 @@ namespace OrganizaMed.Aplicacao.ModuloMedico;
 
 public class ServicoMedico(IRepositorioMedico repositorioMedico)
 {
-    private readonly IRepositorioMedico _repositorioMedico = repositorioMedico;
 
 
     public async Task<Result<Medico>> InserirAsync(Medico medico)
@@ -23,7 +22,7 @@ public class ServicoMedico(IRepositorioMedico repositorioMedico)
             return Result.Fail(erros);
         }
         
-        await _repositorioMedico.InserirAsync(medico);
+        await repositorioMedico.InserirAsync(medico);
         
         return Result.Ok(medico);
     }
@@ -42,30 +41,30 @@ public class ServicoMedico(IRepositorioMedico repositorioMedico)
             
             return Result.Fail(erros);
         }
-        _repositorioMedico.Editar(medico);
+        repositorioMedico.Editar(medico);
         
         return Result.Ok(medico);
     }
 
     public async Task<Result<Medico>> ExcluirAsync(Guid id)
     {
-        var medico = await _repositorioMedico.SelecionarPorIdAsync(id);
+        var medico = await repositorioMedico.SelecionarPorIdAsync(id);
         
-        _repositorioMedico.Excluir(medico);
+        repositorioMedico.Excluir(medico);
         
         return Result.Ok();
     }
 
     public async Task<Result<List<Medico>>> SelecionarTodosAsync()
     {
-        var medicos = await _repositorioMedico.SelecionarTodosAsync();
+        var medicos = await repositorioMedico.SelecionarTodosAsync();
         
         return Result.Ok(medicos);
     }
 
     public async Task<Result<Medico>> SelecionarPorIdAsync(Guid id)
     {
-        var medico = await _repositorioMedico.SelecionarPorIdAsync(id);
+        var medico = await repositorioMedico.SelecionarPorIdAsync(id);
         
         return Result.Ok(medico);
     }
