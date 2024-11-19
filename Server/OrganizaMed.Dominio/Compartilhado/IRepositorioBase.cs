@@ -13,5 +13,5 @@ public interface IRepositorioBase<TEntidade> where TEntidade : Entidade
     
     Task<TEntidade> SelecionarPorIdAsync(Guid id);
     
-    Task<IEnumerable<TEntidade>> SelecionarTodosAsync();
+    Task<List<TEntidade>> SelecionarTodosAsync();
 }
