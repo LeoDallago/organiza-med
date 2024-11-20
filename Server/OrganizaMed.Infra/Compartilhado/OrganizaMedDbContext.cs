@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using OrganizaMed.Dominio.Compartilhado;
+using OrganizaMed.Dominio.ModuloAtendimento;
 using OrganizaMed.Dominio.ModuloMedico;
+using OrganizaMed.Infra.ModuloAtendimento;
 using OrganizaMed.Infra.ModuloMedico;
 
 namespace OrganizaMed.Infra.Compartilhado;
@@ -9,6 +11,8 @@ namespace OrganizaMed.Infra.Compartilhado;
 public class OrganizaMedDbContext : DbContext, IContextoPersistencia
 {
     public DbSet<Medico> Medico { get; set; }
+    
+    public DbSet<Atendimento> Atendimento { get; set; }
     
     public OrganizaMedDbContext(DbContextOptions options) : base(options) { }
 
@@ -25,7 +29,7 @@ public class OrganizaMedDbContext : DbContext, IContextoPersistencia
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        modelBuilder.ApplyConfiguration(new MapeadorAtendimentoOrn());
         modelBuilder.ApplyConfiguration(new MapeadorMedicoOrm());
         base.OnModelCreating(modelBuilder);
     }

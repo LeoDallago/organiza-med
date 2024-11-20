@@ -22,6 +22,31 @@ namespace OrganizaMed.Infra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("OrganizaMed.Dominio.ModuloAtendimento.Atendimento", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("HoraFim")
+                        .HasColumnType("date");
+
+                    b.Property<DateTime>("HoraInicio")
+                        .HasColumnType("date");
+
+                    b.Property<Guid>("MedicoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicoId");
+
+                    b.ToTable("TBAtendimento", (string)null);
+                });
+
             modelBuilder.Entity("OrganizaMed.Dominio.ModuloMedico.Medico", b =>
                 {
                     b.Property<Guid>("Id")
@@ -49,6 +74,17 @@ namespace OrganizaMed.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TBMedico", (string)null);
+                });
+
+            modelBuilder.Entity("OrganizaMed.Dominio.ModuloAtendimento.Atendimento", b =>
+                {
+                    b.HasOne("OrganizaMed.Dominio.ModuloMedico.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Medico");
                 });
 #pragma warning restore 612, 618
         }
