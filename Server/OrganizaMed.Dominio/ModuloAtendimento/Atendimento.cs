@@ -8,7 +8,7 @@ public class Atendimento : Entidade
     public string Tipo { get; set; }
     public DateTime HoraInicio { get; set; }
     public DateTime HoraFim { get; set; }
-    public Medico  medico { get; set; }
+    public Medico  Medico { get; set; }
 
     public Atendimento()
     {
@@ -20,6 +20,6 @@ public class Atendimento : Entidade
         Tipo = tipo;
         HoraInicio = horaInicio;
         HoraFim = horaFim;
-        this.medico = medico;
+        this.Medico = medico;
     }
 }

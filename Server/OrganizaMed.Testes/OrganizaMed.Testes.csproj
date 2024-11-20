@@ -29,4 +29,8 @@
       <ProjectReference Include="..\OrganizaMed.Infra\OrganizaMed.Infra.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ModuloAtendimento\Testes integrados\" />
+    </ItemGroup>
+
 </Project>
