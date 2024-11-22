@@ -33,8 +33,8 @@ namespace OrganizaMed.Infra.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HoraInicio = table.Column<DateTime>(type: "date", nullable: false),
-                    HoraFim = table.Column<DateTime>(type: "date", nullable: false),
+                    HoraInicio = table.Column<TimeSpan>(type: "time", nullable: false),
+                    HoraFim = table.Column<TimeSpan>(type: "time", nullable: false),
                     MedicoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

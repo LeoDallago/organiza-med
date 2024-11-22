@@ -26,8 +26,8 @@ public class Inserir_atendimento
         novoAtendimento = new Atendimento
         {
             Tipo = "Consulta",
-            HoraInicio = DateTime.UtcNow,
-            HoraFim = DateTime.UtcNow.AddHours(1),
+            HoraInicio = TimeSpan.Parse("11:00:00"),
+            HoraFim = TimeSpan.Parse("12:00:00"),
             Medico  = novoMedico,
         };
         
@@ -50,8 +50,8 @@ public class Inserir_atendimento
         Atendimento novoAtendimento = new Atendimento
         {
             Tipo = "",
-            HoraInicio = DateTime.UtcNow,
-            HoraFim = DateTime.UtcNow.AddHours(1),
+            HoraInicio = TimeSpan.Parse("11:00:00"),
+            HoraFim = TimeSpan.Parse("12:00:00"),
             Medico  = novoMedico,
         };
         
@@ -61,5 +61,32 @@ public class Inserir_atendimento
         
         //Assert
         Assert.IsFalse(resultado.IsValid);
+    }
+
+    [TestMethod]
+    public void Deve_Inserir_atendimento_com_horario_invalido()
+    {
+        //Arrange
+        Medico novoMedico = new Medico
+        {
+            Nome = "Nome do novo medico",
+            Cpf = "123.456.789-00",
+            DataNascimento = DateTime.Now,
+            Crm = "12345rs"
+        };
+        
+        Atendimento novoAtendimento = new Atendimento
+        {
+            Tipo = "",
+            HoraInicio = TimeSpan.Parse("11:00:00"),
+            HoraFim = TimeSpan.Parse("10:00:00"),
+            Medico  = novoMedico,
+        };
+        
+        //Act
+        bool validaHora = novoAtendimento.ValidarHorario(novoAtendimento.HoraInicio, novoAtendimento.HoraFim);
+        
+        //Assert
+        Assert.IsFalse(validaHora);
     }
 }

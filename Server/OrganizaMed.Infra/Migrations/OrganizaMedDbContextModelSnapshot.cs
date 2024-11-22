@@ -27,11 +27,11 @@ namespace OrganizaMed.Infra.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("HoraFim")
-                        .HasColumnType("date");
+                    b.Property<TimeSpan>("HoraFim")
+                        .HasColumnType("time");
 
-                    b.Property<DateTime>("HoraInicio")
-                        .HasColumnType("date");
+                    b.Property<TimeSpan>("HoraInicio")
+                        .HasColumnType("time");
 
                     b.Property<Guid>("MedicoId")
                         .HasColumnType("uniqueidentifier");

@@ -23,8 +23,8 @@ public class Editar_Atendimento
         Atendimento novoAtendimento = new Atendimento
         {
             Tipo = "Consulta",
-            HoraInicio = DateTime.UtcNow,
-            HoraFim = DateTime.UtcNow.AddHours(1),
+            HoraInicio = TimeSpan.Parse("11:00:00"),
+            HoraFim = TimeSpan.Parse("12:00:00"),
             Medico  = novoMedico,
         };
         

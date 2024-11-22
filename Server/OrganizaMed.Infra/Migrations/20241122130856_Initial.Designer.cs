@@ -12,7 +12,7 @@ using OrganizaMed.Infra.Compartilhado;
 namespace OrganizaMed.Infra.Migrations
 {
     [DbContext(typeof(OrganizaMedDbContext))]
-    [Migration("20241120132654_Initial")]
+    [Migration("20241122130856_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -30,11 +30,11 @@ namespace OrganizaMed.Infra.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("HoraFim")
-                        .HasColumnType("date");
+                    b.Property<TimeSpan>("HoraFim")
+                        .HasColumnType("time");
 
-                    b.Property<DateTime>("HoraInicio")
-                        .HasColumnType("date");
+                    b.Property<TimeSpan>("HoraInicio")
+                        .HasColumnType("time");
 
                     b.Property<Guid>("MedicoId")
                         .HasColumnType("uniqueidentifier");

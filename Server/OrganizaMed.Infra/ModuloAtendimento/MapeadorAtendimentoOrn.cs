@@ -17,11 +17,11 @@ public class MapeadorAtendimentoOrn : IEntityTypeConfiguration<Atendimento>
             .IsRequired();
 
         builder.Property(x => x.HoraInicio)
-            .HasColumnType("date")
+            .HasColumnType("time")
             .IsRequired();
         
         builder.Property(x => x.HoraFim)
-            .HasColumnType("date")
+            .HasColumnType("time")
             .IsRequired();
 
         builder.HasOne(x => x.Medico)
