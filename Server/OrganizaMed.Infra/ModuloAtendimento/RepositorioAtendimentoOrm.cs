@@ -11,6 +11,16 @@ public class RepositorioAtendimentoOrm : RepositorioBase<Atendimento>, IReposito
     {
     }
 
+    public override async Task<Atendimento> SelecionarPorIdAsync(Guid id)
+    {
+        return await registros.Include(x => x.Medico).SingleOrDefaultAsync(x => x.Id == id);
+    }
+    
+    public override async Task<List<Atendimento>> SelecionarTodosAsync()
+    {
+        return await registros.Include(x =>x.Medico).ToListAsync();
+    }
+
     public async Task<List<Atendimento>> Filtrar(Func<Atendimento, bool> predicate)
     {
         var atendimentos = await registros.ToListAsync();

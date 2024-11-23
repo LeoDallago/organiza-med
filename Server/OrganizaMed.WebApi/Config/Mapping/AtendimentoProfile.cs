@@ -8,7 +8,9 @@ public class AtendimentoProfile : Profile
 {
     public AtendimentoProfile()
     {
-        CreateMap<Atendimento, ListarAtendimentoViewModel>();
+        CreateMap<Atendimento, ListarAtendimentoViewModel>()
+            .ForMember(dest => dest.Medico,
+                opt => opt.MapFrom(src => src.Medico.Nome));
         CreateMap<Atendimento, VisualizarAtendimentoViewModel>();
 
         CreateMap<InserirAtendimentoViewModel, Atendimento>();

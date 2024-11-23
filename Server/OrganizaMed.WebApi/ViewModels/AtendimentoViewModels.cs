@@ -7,7 +7,7 @@ public class ListarAtendimentoViewModel
     public Guid Id { get; set; }
     public string Tipo { get; set; }
     
-    public ListarMedicoViewModel Medico { get; set; }
+    public string Medico{ get; set; }
 }
 
 public class VisualizarAtendimentoViewModel

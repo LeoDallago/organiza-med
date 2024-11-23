@@ -50,7 +50,7 @@ public class RepositorioBase<TEntidade> where TEntidade : Entidade
         return await registros.SingleOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<List<TEntidade>> SelecionarTodosAsync()
+    public async virtual Task<List<TEntidade>> SelecionarTodosAsync()
     {
         return await registros.ToListAsync();
     }
