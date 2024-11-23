@@ -28,5 +28,11 @@ public class MapeadorMedicoOrm: IEntityTypeConfiguration<Medico>
         builder.Property(x => x.DataNascimento)
             .HasColumnType("date")
             .IsRequired();
+        
+        builder.HasOne(x => x.Usuario)
+            .WithMany()
+            .IsRequired()
+            .HasForeignKey(x => x.UsuarioId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }

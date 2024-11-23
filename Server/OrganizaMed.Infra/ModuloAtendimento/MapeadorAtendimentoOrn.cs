@@ -29,5 +29,11 @@ public class MapeadorAtendimentoOrn : IEntityTypeConfiguration<Atendimento>
             .HasForeignKey(x => x.MedicoId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(x => x.Usuario)
+            .WithMany()
+            .IsRequired()
+            .HasForeignKey(x => x.UsuarioId)
+            .OnDelete(DeleteBehavior.NoAction);
     }
 }
