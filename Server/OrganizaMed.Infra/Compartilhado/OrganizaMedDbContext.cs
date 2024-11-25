@@ -13,14 +13,14 @@ namespace OrganizaMed.Infra.Compartilhado;
 public class OrganizaMedDbContext : IdentityDbContext<Usuario, Cargo, Guid>, IContextoPersistencia
 {
     public DbSet<Medico> Medico { get; set; }
-    
     public DbSet<Atendimento> Atendimento { get; set; }
     
     private readonly ITenantProvider? _tenantProvider;
+    private readonly Guid UsuarioId;
 
     public OrganizaMedDbContext(DbContextOptions options, ITenantProvider? tenantProvider) : base(options)
     {
-        _tenantProvider = tenantProvider;
+        UsuarioId = tenantProvider.UsuarioId.GetValueOrDefault();
     }
 
     public OrganizaMedDbContext() 
@@ -36,21 +36,18 @@ public class OrganizaMedDbContext : IdentityDbContext<Usuario, Cargo, Guid>, ICo
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        Guid? usuarioId = _tenantProvider?.UsuarioId;
         
         modelBuilder.ApplyConfiguration(new MapeadorAtendimentoOrn());
-        modelBuilder.Entity<Atendimento>().HasQueryFilter(a => a.UsuarioId == usuarioId);
+       modelBuilder.Entity<Atendimento>().HasQueryFilter(a => a.UsuarioId == UsuarioId);
         
         modelBuilder.ApplyConfiguration(new MapeadorMedicoOrm());
-        modelBuilder.Entity<Medico>().HasQueryFilter(m => m.UsuarioId == usuarioId);
+       modelBuilder.Entity<Medico>().HasQueryFilter(m => m.UsuarioId == UsuarioId);
         
         base.OnModelCreating(modelBuilder);
     }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured)
-        {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
@@ -59,7 +56,7 @@ public class OrganizaMedDbContext : IdentityDbContext<Usuario, Cargo, Guid>, ICo
             var connectionString = config.GetConnectionString("SqlServer");
 
             optionsBuilder.UseSqlServer(connectionString);
-        }
+        
 
         base.OnConfiguring(optionsBuilder);
     }

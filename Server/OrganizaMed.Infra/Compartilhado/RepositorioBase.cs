@@ -5,39 +5,39 @@ namespace OrganizaMed.Infra.Compartilhado;
 
 public class RepositorioBase<TEntidade> where TEntidade : Entidade
 {
-    protected OrganizaMedDbContext dbContext;
+    protected IContextoPersistencia dbContext;
     protected DbSet<TEntidade> registros;
 
     public RepositorioBase(IContextoPersistencia contexto)
     {
-        this.dbContext = (OrganizaMedDbContext)contexto;
-        this.registros = dbContext.Set<TEntidade>();
+        this.dbContext = contexto;
+        this.registros = ((DbContext)dbContext).Set<TEntidade>();
     }
 
     public bool Inserir(TEntidade registro)
     {
         registros.AddAsync(registro);
-        dbContext.SaveChanges();
+        dbContext.GravarAsync();
         return true;
     }
     
     public async Task<bool> InserirAsync(TEntidade registro)
     {
         await registros.AddAsync(registro);
-        await dbContext.SaveChangesAsync();
+        await dbContext.GravarAsync();
         return true;
     }
 
-    public void Editar(TEntidade registro)
+    public async Task Editar(TEntidade registro)
     {
         registros.Update(registro);
-        dbContext.SaveChanges();
+       await dbContext.GravarAsync();
     }
 
-    public void Excluir(TEntidade registro)
+    public async Task Excluir(TEntidade registro)
     {
         registros.Remove(registro);
-        dbContext.SaveChanges();
+        await dbContext.GravarAsync();
     }
 
     public virtual TEntidade SelecionarPorId(Guid id)

@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrganizaMed.Aplicacao.ModuloAtendimento;
 using OrganizaMed.Dominio.ModuloAtendimento;
+using OrganizaMed.Dominio.ModuloAutenticacao;
 using OrganizaMed.WebApi.ViewModels;
 
 namespace OrganizaMed.WebApi.Controllers;
 
 [Route("api/atendimentos")]
 [ApiController]
-public class AtendimentoController(ServicoAtendimento servicoAtendimento, IMapper mapper) : ControllerBase
+[Authorize]
+public class AtendimentoController(ServicoAtendimento servicoAtendimento, IMapper mapper, ITenantProvider tenantProvider) : ControllerBase
 {
    [HttpGet]
    public async Task<IActionResult> Get()
@@ -40,6 +43,7 @@ public class AtendimentoController(ServicoAtendimento servicoAtendimento, IMappe
    public async Task<IActionResult> Post(InserirAtendimentoViewModel inserirAtendimentoViewModel)
    {
       var atendimento = mapper.Map<Atendimento>(inserirAtendimentoViewModel);
+      atendimento.UsuarioId = tenantProvider.UsuarioId.GetValueOrDefault();
       
       var resultado = await servicoAtendimento.InserirAsync(atendimento);
       

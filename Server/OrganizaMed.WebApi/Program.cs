@@ -2,12 +2,14 @@ using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using OrganizaMed.WebApi;
 using OrganizaMed.WebApi.Config.Mapping;
+using OrganizaMed.WebApi.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureServices();
 builder.Services.ConfigureAutoMapper();
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -16,25 +18,12 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter());
     });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Organiza Med",
-        Version = "v1"
-    });
-    
-    options.MapType<TimeSpan>(() => new Microsoft.OpenApi.Models.OpenApiSchema
-    {
-        Type = "string",
-        Format = "time-span",
-        Example = new Microsoft.OpenApi.Any.OpenApiString("00:00:00")
-    });
-});
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJwt(builder.Configuration);
+
+builder.Services.SwaggerConfig();
 
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {

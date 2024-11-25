@@ -5,9 +5,9 @@ public interface IRepositorioBase<TEntidade> where TEntidade : Entidade
     
     Task<bool> InserirAsync(TEntidade registro);
     
-    void Editar(TEntidade registro);
+    Task Editar(TEntidade registro);
     
-    void Excluir(TEntidade registro);
+    Task Excluir(TEntidade registro);
 
     TEntidade SelecionarPorId(Guid id);
     

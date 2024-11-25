@@ -4,10 +4,16 @@ using OrganizaMed.Dominio.ModuloAutenticacao;
 
 namespace OrganizaMed.Aplicacao.ModuloAutenticacao;
 
-public class ServicoAutenticacao(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
+public class ServicoAutenticacao
 {
-    private readonly UserManager<Usuario> _userManager = userManager;
-    private readonly SignInManager<Usuario> _signInManager = signInManager;
+    private readonly UserManager<Usuario> _userManager;
+    private readonly SignInManager<Usuario> _signInManager;
+
+    public ServicoAutenticacao(SignInManager<Usuario> signInManager, UserManager<Usuario> userManager)
+    {
+        _signInManager = signInManager;
+        _userManager = userManager;
+    }
 
     public async Task<Result<Usuario>> RegistrarAsync(Usuario usuario, string senha)
     {

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrganizaMed.Aplicacao.ModuloMedico;
+using OrganizaMed.Dominio.ModuloAutenticacao;
 using OrganizaMed.Dominio.ModuloMedico;
 using OrganizaMed.WebApi.ViewModels;
 
@@ -9,7 +11,8 @@ namespace OrganizaMed.WebApi.Controllers;
 
 [Route("api/medicos")]
 [ApiController]
-public class MedicoController(ServicoMedico servicoMedico, IMapper mapper) : ControllerBase
+[Authorize]
+public class MedicoController(ServicoMedico servicoMedico, IMapper mapper, ITenantProvider tenantProvider) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> Get()
@@ -40,7 +43,9 @@ public class MedicoController(ServicoMedico servicoMedico, IMapper mapper) : Con
     [HttpPost]
     public async Task<IActionResult> Post(InserirMedicoViewModel inserirMedicoViewModel)
     {
+        
         var medico = mapper.Map<Medico>(inserirMedicoViewModel);
+        medico.UsuarioId = tenantProvider.UsuarioId.GetValueOrDefault();
         
         var resultado = await servicoMedico.InserirAsync(medico);
 
