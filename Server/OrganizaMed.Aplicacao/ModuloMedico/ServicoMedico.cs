@@ -41,7 +41,7 @@ public class ServicoMedico(IRepositorioMedico repositorioMedico)
             
             return Result.Fail(erros);
         }
-        repositorioMedico.Editar(medico);
+        await repositorioMedico.Editar(medico);
         
         return Result.Ok(medico);
     }
@@ -50,7 +50,7 @@ public class ServicoMedico(IRepositorioMedico repositorioMedico)
     {
         var medico = await repositorioMedico.SelecionarPorIdAsync(id);
         
-        repositorioMedico.Excluir(medico);
+        await repositorioMedico.Excluir(medico);
         
         return Result.Ok();
     }

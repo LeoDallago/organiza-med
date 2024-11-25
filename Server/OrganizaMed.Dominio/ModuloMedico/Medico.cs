@@ -29,5 +29,4 @@ public class Medico : Entidade
         Crm = crm;
     }
     
-    
 }

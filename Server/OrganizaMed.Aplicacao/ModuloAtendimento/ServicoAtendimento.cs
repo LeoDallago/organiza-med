@@ -19,6 +19,9 @@ public class ServicoAtendimento(IRepositorioAtendimento repositorioAtendimento)
             
             return Result.Fail(erros);
         }
+
+        if (!atendimento.ValidarHorario(atendimento.HoraInicio, atendimento.HoraFim))
+            return Result.Fail("Horario invalido");
         
         await repositorioAtendimento.InserirAsync(atendimento);
         
@@ -40,7 +43,7 @@ public class ServicoAtendimento(IRepositorioAtendimento repositorioAtendimento)
             return Result.Fail(erros);
         }
         
-        repositorioAtendimento.Editar(atendimento);
+        await repositorioAtendimento.Editar(atendimento);
         
         return Result.Ok(atendimento);
     }
@@ -49,7 +52,7 @@ public class ServicoAtendimento(IRepositorioAtendimento repositorioAtendimento)
     {
         var atendimento = await repositorioAtendimento.SelecionarPorIdAsync(id);
         
-        repositorioAtendimento.Excluir(atendimento);
+        await repositorioAtendimento.Excluir(atendimento);
         
         return Result.Ok();
     }
