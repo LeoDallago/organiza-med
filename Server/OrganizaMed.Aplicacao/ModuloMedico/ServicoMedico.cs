@@ -68,4 +68,11 @@ public class ServicoMedico(IRepositorioMedico repositorioMedico)
         
         return Result.Ok(medico);
     }
+
+    public async Task<bool> IdentificarMedicosIguais(Medico medico)
+    {
+        var medicos = await repositorioMedico.SelecionarTodosAsync();
+
+        return medicos.Any(medicoInserido => medico.Nome == medicoInserido.Nome && medico.Crm == medicoInserido.Crm);
+    }
 }

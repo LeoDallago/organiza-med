@@ -46,6 +46,10 @@ public class MedicoController(ServicoMedico servicoMedico, IMapper mapper, ITena
         
         var medico = mapper.Map<Medico>(inserirMedicoViewModel);
         medico.UsuarioId = tenantProvider.UsuarioId.GetValueOrDefault();
+
+        if (await servicoMedico.IdentificarMedicosIguais(medico))
+            return BadRequest("Medico ja inserido!");
+        
         
         var resultado = await servicoMedico.InserirAsync(medico);
 

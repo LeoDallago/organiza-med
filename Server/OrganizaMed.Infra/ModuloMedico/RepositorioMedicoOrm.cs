@@ -15,12 +15,6 @@ public class RepositorioMedicoOrm : RepositorioBase<Medico>, IRepositorioMedico
     {
         return  registros.SingleOrDefault(x =>x.Id == id);
     }
-
-    public Task<IEnumerable<Medico>> SelecionarTodosAsync()
-    {
-        throw new NotImplementedException();
-    }
-
     
     public override Medico SelecionarPorId(Guid id)
     {
