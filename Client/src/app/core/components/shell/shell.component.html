@@ -1,7 +1,16 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar navbar-expand bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">OrganizaMed</a>
-    </div>
-</nav>
 
-<router-outlet></router-outlet>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li *ngFor="let item of itensMenu" class="nav-item">
+                    <i></i>
+                    <a class="nav-link" [ngClass]=(item.icone) href={{item.rota}}>{{item.titulo}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<ng-content></ng-content>
