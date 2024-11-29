@@ -2,20 +2,28 @@ using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using OrganizaMed.WebApi;
 using OrganizaMed.WebApi.Config.Mapping;
+using OrganizaMed.WebApi.Filters;
 using OrganizaMed.WebApi.Identity;
+
+const string politicaCors = "politicaCors";
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.ConfigureCors(politicaCors);
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureServices();
 builder.Services.ConfigureAutoMapper();
 
-
-builder.Services.AddControllers()
+builder.Services.AddControllers(opt =>
+    {
+        opt.Filters.Add<ResponseWrapperFilter>();
+    })
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         options.JsonSerializerOptions.Converters.Add(new TimeSpanToStringConverter());
+        
+        
     });
 
 builder.Services.ConfigureIdentity();
@@ -32,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(politicaCors);
 
 app.UseAuthorization();
 

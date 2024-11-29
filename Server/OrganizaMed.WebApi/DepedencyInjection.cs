@@ -48,6 +48,20 @@ public static class DepedencyInjection
         });
     }
 
+    public static void ConfigureCors(this IServiceCollection services, string politicaCors)
+    {
+        services.AddCors(opt =>
+        {
+            opt.AddPolicy(name: politicaCors, policy =>
+            {
+                policy
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+    }
+
     public static void SwaggerConfig(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();

@@ -9,7 +9,7 @@ import { ListarMedicoViewModel } from '../models/medico.model';
 })
 export class MedicoService {
 
-  private readonly url = `${environment.API_URL}/medicos`;
+  private readonly url = `${environment.API_URL}/api/medicos`;
 
   constructor(private http: HttpClient) { }
 

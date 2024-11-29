@@ -1,16 +1,34 @@
-<nav class="navbar navbar-expand bg-body-tertiary">
+<nav *ngIf="usuarioAutenticado" class="navbar navbar-expand bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">OrganizaMed</a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li *ngFor="let item of itensMenu" class="nav-item">
-                    <i></i>
+                    <a class="nav-link" [ngClass]=(item.icone) href={{item.rota}}>{{item.titulo}}</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <p class="text-body-secondary fs-6 m-2">olá, {{usuarioAutenticado.userName}}</p>
+        <button *ngIf="usuarioAutenticado" (click)="logoutEfetuado()"
+            class="btn btn-secondary btn-sm m-2">LogOut</button>
+
+    </div>
+</nav>
+
+<nav *ngIf="!usuarioAutenticado" class="navbar navbar-expand bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">OrganizaMed</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li *ngFor="let item of itensLogin" class="nav-item">
                     <a class="nav-link" [ngClass]=(item.icone) href={{item.rota}}>{{item.titulo}}</a>
                 </li>
             </ul>
         </div>
     </div>
-
 </nav>
 <ng-content></ng-content>
