@@ -34,6 +34,11 @@ export class ShellComponent {
       titulo: 'Medicos',
       icone: 'bi bi-person',
       rota: '/medico'
+    },
+    {
+      titulo: 'Atendimentos',
+      icone: 'bi bi-file-medical',
+      rota: '/atendimento'
     }
   ]
 

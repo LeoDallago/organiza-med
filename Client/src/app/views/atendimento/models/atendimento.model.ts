@@ -17,7 +17,11 @@ export interface AtendimentoInseridoViewModel {
 
 export interface AtendimentoExcluidoViewModel { }
 
-export interface ListarAtendimentoViewModel extends AtendimentoInseridoViewModel { }
+export interface ListarAtendimentoViewModel {
+    id: string,
+    tipo: string,
+    medico: MedicoInseridoViewModel
+}
 
 export interface EditarAtendimentoViewModel extends InserirAntendimentoViewModel { }
 
