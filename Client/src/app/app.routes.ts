@@ -56,5 +56,12 @@ export const routes: Routes = [
         loadChildren: () => import('./views/medico/medico.routes')
             .then((m) => m.medicoRoutes),
         canMatch: [authGuard]
+    },
+
+    {
+        path: 'atendimento',
+        loadChildren: () => import('./views/atendimento/atendimento.routes')
+            .then((a) => a.atendimentoRoutes),
+        canMatch: [authGuard]
     }
 ];
