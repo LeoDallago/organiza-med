@@ -1,7 +1,7 @@
 export interface InserirMedicoViewModel {
     nome: string,
     dataNascimento: string,
-    telfone: string,
+    telefone: string,
     cpf: string,
     crm: string
 }
@@ -10,7 +10,7 @@ export interface MedicoInseridoViewModel {
     id: string,
     nome: string,
     dataNascimento: string,
-    telfone: string,
+    telefone: string,
     cpf: string,
     crm: string
 }
