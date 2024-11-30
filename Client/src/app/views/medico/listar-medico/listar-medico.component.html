@@ -5,19 +5,19 @@
 
     <hr>
     <div class="row">
-        <div class="d-lg-flex">
-            <div *ngFor="let item of medicos" class="card m-1 col-lg-3">
+        <div *ngFor="let item of medicos" class=" col-lg-3">
+            <div class="card m-1">
                 <div class="card-body">
-                    <div class="card-title fw-sembold">{{item.nome}}</div>
+                    <div class="card-title fw-semibold fs-5">{{item.nome}}</div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{item.telfone}}</li>
-                        <li class="list-group-item">{{item.crm}}</li>
+                        <li class="list-group-item">Telefone: {{item.telefone}}</li>
+                        <li class="list-group-item">CRM: {{item.crm}}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary m-1  ">
+                        <a [routerLink]="['/medico','editar',item.id]" class="btn btn-primary m-1">
                             <i class="bi bi-pencil"></i>
                         </a>
-                        <a href="#" class="btn btn-danger m-1  ">
+                        <a [routerLink]="['/medico','excluir',item.id]" class="btn btn-danger m-1  ">
                             <i class="bi bi-x-circle"></i>
                         </a>
                     </div>

@@ -6,7 +6,7 @@ import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-listar-medico',
   standalone: true,
-  imports: [RouterLink, NgForOf],
+  imports: [RouterLink, NgForOf, RouterLink],
   templateUrl: './listar-medico.component.html',
 })
 export class ListarMedicoComponent implements OnInit {

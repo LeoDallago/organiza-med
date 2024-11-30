@@ -18,7 +18,7 @@ export interface MedicoInseridoViewModel {
 export interface ListarMedicoViewModel {
     id: string,
     nome: string,
-    telfone: string,
+    telefone: string,
     crm: string
 }
 
