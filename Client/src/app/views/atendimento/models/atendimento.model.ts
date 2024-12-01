@@ -27,4 +27,4 @@ export interface EditarAtendimentoViewModel extends InserirAntendimentoViewModel
 
 export interface AtendimentoEditadoViewModel extends AtendimentoInseridoViewModel { }
 
-export interface VisualizarAtendimentoViewModel extends ListarAtendimentoViewModel { }
+export interface VisualizarAtendimentoViewModel extends AtendimentoInseridoViewModel { }

@@ -1,1 +1,16 @@
-<p>excluir works!</p>
+<div class="container">
+    <h1 class="fs-2 mt-2 mb-4">Deseja excluir esta <span class="fw-bold">{{detalhesAtendimento?.tipo}}</span> ?</h1>
+
+    <div class="card col-6">
+        <div class="card-body">
+            <div class="card-text">Inicio: {{detalhesAtendimento?.horaInicio}}</div>
+            <div class="card-text">Fim: {{detalhesAtendimento?.horaFim}}</div>
+
+        </div>
+
+        <div class="card-body">
+            <button class="btn btn-danger m-2 fw-bold" (click)="excluir()">Excluir</button>
+            <a class="btn btn-secondary" [routerLink]="['/atendimento', 'listar']">Voltar</a>
+        </div>
+    </div>
+</div>
