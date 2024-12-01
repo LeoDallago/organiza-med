@@ -1,1 +1,35 @@
-<p>editar works!</p>
+<div class="container">
+    <h1 class="fs-2 mb-3 mt-2">Editar Atendimento</h1>
+    <form [formGroup]="form" (submit)="gravar()" class="col-6">
+        <div class="mb-3">
+            <label class="form-label">Tipo</label>
+            <select class="form-select" formControlName="tipo">
+                <option value="Consulta">Consulta</option>
+                <option value="Cirurgia">Cirurgia</option>
+            </select>
+            <div *ngIf="tipo?.errors?.['required']" class="form-text">O tipo precisa ser preenchido</div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Hora de inicio</label>
+            <input type="time" step="1" formControlName="horaInicio" class="form-control">
+            <div *ngIf="horaInicio?.errors?.['required']" class="form-text">A Hora de inicio precisa ser
+                preenchida</div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Hora de Termino</label>
+            <input type="time" step="1" class="form-control" formControlName="horaFim" aria-describedby="telefoneHelp">
+            <div *ngIf="horaFim?.errors?.['required']" class="form-text">A Hora de Termino precisa ser preenchida
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Medico</label>
+            <select class="form-select" formControlName="medicoId">
+                <option *ngFor="let item of medicos | async" value={{item.id}}>{{item.nome}}</option>
+            </select>
+            <div *ngIf="medicoId?.errors?.['required']" class="form-text">O Medico precisa ser preenchido</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
