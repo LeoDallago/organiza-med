@@ -16,6 +16,5 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.atendimentos = this.route.snapshot.data['atendimentos']
-    console.log(this.atendimentos)
   }
 }

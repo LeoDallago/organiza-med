@@ -67,7 +67,7 @@ export class CadastrarMedicoComponent {
     this.medicoService.inserir(inserirMedicoVm).subscribe(observer);
   }
 
-  private processarSucesso(categoria: MedicoInseridoViewModel): void {
+  private processarSucesso(medico: MedicoInseridoViewModel): void {
     this.toastr.success('Medico cadastrado com sucesso!!')
 
     this.router.navigate(['/medico', 'listar'])

@@ -3,16 +3,16 @@ import { MedicoInseridoViewModel } from "../../medico/models/medico.model";
 export interface InserirAntendimentoViewModel {
     tipo: string,
     horaInicio: string,
-    horaTermino: string,
-    medico: MedicoInseridoViewModel
+    horaFim: string,
+    medicoId: string
 }
 
 export interface AtendimentoInseridoViewModel {
     id: string,
     tipo: string,
     horaInicio: string,
-    horaTermino: string,
-    medico: MedicoInseridoViewModel
+    horaFim: string,
+    medicoId: string
 }
 
 export interface AtendimentoExcluidoViewModel { }
@@ -20,7 +20,7 @@ export interface AtendimentoExcluidoViewModel { }
 export interface ListarAtendimentoViewModel {
     id: string,
     tipo: string,
-    medico: MedicoInseridoViewModel
+    medico: string
 }
 
 export interface EditarAtendimentoViewModel extends InserirAntendimentoViewModel { }

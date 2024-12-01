@@ -14,7 +14,7 @@ export class AtendimentoService {
 
   constructor(private http: HttpClient) { }
 
-  IntersectionObserver(inserirAtendimentoVm: InserirAntendimentoViewModel): Observable<AtendimentoInseridoViewModel> {
+  inserir(inserirAtendimentoVm: InserirAntendimentoViewModel): Observable<AtendimentoInseridoViewModel> {
     return this.http.post<AtendimentoInseridoViewModel>(this.url, inserirAtendimentoVm)
       .pipe(map(this.processarDados), catchError(this.processarFalha))
   }
