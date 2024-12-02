@@ -22,7 +22,7 @@ export class AuthService {
     public login(loginUsuario: AutenticarUsuarioViewModel) {
         const urlCompleto = `${this.apiUrl}/autenticar`
 
-        return this.http.post<TokenViewModel>(urlCompleto, loginUsuario).pipe(map(this.processarDados));
+        return this.http.post<TokenViewModel>(urlCompleto, loginUsuario).pipe(map(this.processarDados), catchError((err: any) => this.processarFalha(err)));
     }
 
     public logout() {
@@ -35,14 +35,13 @@ export class AuthService {
     }
 
     private processarDados(resposta: any): TokenViewModel {
-        console.log(resposta);
 
         if (resposta.sucesso) return resposta.dados;
         throw new Error('Erro ao mapear token do usuario')
     }
 
     private processarFalha(resposta: any) {
-        //  console.log(resposta);
+
         return throwError(() => new Error(resposta.error.erros[0]))
     }
 }

@@ -6,6 +6,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
 import { AutenticarUsuarioViewModel, TokenViewModel } from '../../models/auth.models';
 import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService,
     private usuarioService: UsuarioService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private toastr: ToastrService,
   ) {
     this.form = this.fb.group({
       userName: [
@@ -78,7 +80,7 @@ export class LoginComponent {
     this.router.navigate(['/dashboard']);
   }
 
-  private processarFalha(err: Error) {
-    console.log(err.message);
+  private processarFalha(err: any) {
+    this.toastr.error(err);
   }
 }
