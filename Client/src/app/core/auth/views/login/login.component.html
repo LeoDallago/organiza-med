@@ -4,7 +4,7 @@
     <div class="card col-3 mt-5 p-4 mx-auto">
         <form [formGroup]="form" (submit)="entrar()">
             <label class="form-label">Login</label>
-            <input type="text" formControlName="userName" class="form-control">
+            <input type="text" formControlName="userName" data-cy="userName" class="form-control">
             <div *ngIf="userName?.errors?.['required']" class="form-text">O login precisa ser
                 preenchido!</div>
             <div *ngIf="userName?.errors?.['minLength']" class="form-text">O login precisa ter ao minimo 2 caracteres!
@@ -14,7 +14,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label mt-2">Senha</label>
-                <input type="password" formControlName="password" class="form-control">
+                <input type="password" formControlName="password" data-cy="password" class="form-control">
                 <div *ngIf="password?.errors?.['required']" class="form-text">A senha precisa ser preenchida!</div>
                 <div *ngIf="password?.errors?.['minLength']" class="form-text">A senha precisa ter ao minimo 6
                     caracteres!
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" data-cy="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
 </div>

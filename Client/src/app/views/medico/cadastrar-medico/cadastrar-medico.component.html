@@ -3,20 +3,21 @@
     <form [formGroup]="form" (submit)="gravar()" class="col-6">
         <div class="mb-3">
             <label class="form-label">Nome</label>
-            <input type="text" formControlName="nome" class="form-control">
+            <input type="text" formControlName="nome" data-cy="nome" class="form-control">
             <div *ngIf="nome?.errors?.['required']" class="form-text">O nome precisa ser preenchido</div>
             <div *ngIf="nome?.errors?.['minLength']" class="form-text">O nome precisa ter pelo menos 2 caracteres</div>
         </div>
         <div class="mb-3">
             <label class="form-label">Data de Nascimento</label>
-            <input type="date" formControlName="dataNascimento" class="form-control">
+            <input type="date" formControlName="dataNascimento" data-cy="dataNascimento" class="form-control">
             <div *ngIf="dataNascimento?.errors?.['required']" class="form-text">A data de nascimento precisa ser
                 preenchida</div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Telefone</label>
-            <input type="tel" class="form-control" formControlName="telefone" aria-describedby="telefoneHelp">
+            <input type="tel" class="form-control" formControlName="telefone" data-cy="telefone"
+                aria-describedby="telefoneHelp">
             <div id="telefoneHelp" class="form-text">Apenas numeros</div>
             <div *ngIf="telefone?.errors?.['required']" class="form-text">O telefone precisa ser preenchido</div>
             <div *ngIf="telefone?.errors?.['maxLength']" class="form-text">O telefone precisa ter ao maximo 30
@@ -25,7 +26,7 @@
 
         <div class="mb-3">
             <label class="form-label">CPF</label>
-            <input type="text" class="form-control" formControlName="cpf" aria-describedby="cpfHelp">
+            <input type="text" class="form-control" formControlName="cpf" data-cy="cpf" aria-describedby="cpfHelp">
             <div id="cpfHelp" class="form-text">Apenas numeros</div>
             <div *ngIf="cpf?.errors?.['required']" class="form-text">O CPF precisa ser preenchido</div>
             <div *ngIf="cpf?.errors?.['maxLength']" class="form-text">O CPF precisa ter ao maximo 11 caracteres</div>
@@ -33,11 +34,11 @@
 
         <div class="mb-3">
             <label class="form-label">CRM</label>
-            <input type="text" formControlName="crm" class="form-control">
+            <input type="text" formControlName="crm" data-cy="crm" class="form-control">
             <div *ngIf="crm?.errors?.['required']" class="form-text">O CRM precisa ser preenchido</div>
             <div *ngIf="crm?.errors?.['maxLength']" class="form-text">O CRM precisa ter ao maximo 7S caracteres</div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" data-cy="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>

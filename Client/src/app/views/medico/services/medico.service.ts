@@ -47,6 +47,6 @@ export class MedicoService {
   }
 
   private processarFalha(resposta: any) {
-    return throwError(() => new Error(resposta.error.erros))
+    return throwError(() => new Error(resposta.error.dados))
   }
 }
