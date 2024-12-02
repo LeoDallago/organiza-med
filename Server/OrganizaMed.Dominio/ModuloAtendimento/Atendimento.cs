@@ -30,8 +30,8 @@ public class Atendimento : Entidade
     public bool ValidarHorario(TimeSpan horaInicio, TimeSpan horaFim)
     {
         if(horaInicio > horaFim)
-            return false;
+            return true;
         
-        return true;
+        return false;
     }
 }
