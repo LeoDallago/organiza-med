@@ -43,6 +43,9 @@ public class ServicoAtendimento(IRepositorioAtendimento repositorioAtendimento)
             return Result.Fail(erros);
         }
         
+        if (atendimento.ValidarHorario(atendimento.HoraInicio, atendimento.HoraFim))
+            return Result.Fail("Horario invalido");
+        
         await repositorioAtendimento.Editar(atendimento);
         
         return Result.Ok(atendimento);

@@ -28,7 +28,7 @@ export class AtendimentoService {
   excluir(id: string): Observable<AtendimentoExcluidoViewModel> {
     const urlCompleto = `${this.url}/${id}`
     return this.http.delete<AtendimentoEditadoViewModel>(urlCompleto)
-      .pipe(map(this.processarDados), catchError(this.processarFalha))
+      .pipe(catchError(this.processarFalha))
   }
 
   selecionarTodos(): Observable<ListarAtendimentoViewModel[]> {

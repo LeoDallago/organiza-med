@@ -58,7 +58,7 @@ export class CadastrarMedicoComponent {
     }
 
     const inserirMedicoVm: InserirMedicoViewModel = this.form.value;
-    console.log(inserirMedicoVm)
+
     const observer: PartialObserver<MedicoInseridoViewModel> = {
       next: (medicoInserido) => this.processarSucesso(medicoInserido),
       error: (erro) => this.processarFalha(erro)
