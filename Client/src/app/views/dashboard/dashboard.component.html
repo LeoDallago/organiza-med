@@ -1,18 +1,13 @@
 <div class="container">
-    <h1 class="fs-2 fw-semibold m-3">Dashboard</h1>
-
+    <h1 class="fs-2 fw-semibold m-3">{{periodoMensagem()}}, {{dataFormatada}}</h1>
+    <hr>
+    <h3 class="fs-3 fw-semibold m-3">Atendimentos</h3>
     <div class="row">
         <div class="d-flex col-8">
-            <div class="card m-1">
+            <div *ngFor="let item of atendimentos | async" class="card m-1">
                 <div class="card-body">
-                    <div class="card-title">Titulo do card</div>
-                    <div class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, fugit?</div>
-                    <button class="btn btn-primary btn-sm">
-                        <i class="bi bi-play-fill "></i>
-                    </button>
-                    <a href="#" class="btn btn-danger m-1 btn-sm ">
-                        <i class="bi bi-x-circle"></i>
-                    </a>
+                    <div class="card-title">Tipo: <span class="fw-semibold">{{item.tipo}}</span></div>
+                    <div class="card-text">Medico responsavel: <span class="fw-semibold">{{item.medico}}</span></div>
                 </div>
             </div>
 
