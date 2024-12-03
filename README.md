@@ -1,6 +1,6 @@
 # OrganizaMed
 
-[![Stack](https://skillicons.dev/icons?i=dotnet,cs,nodejs,typescript,angular,bootstrap,cypress&perline=8)](https://skillicons.dev)
+[![Stack](https://skillicons.dev/icons?i=dotnet,cs,nodejs,typescript,angular,bootstrap,cypress&perline=8&theme=light)](https://skillicons.dev)
 
 ## Projeto
 
