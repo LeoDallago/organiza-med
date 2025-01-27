@@ -6,11 +6,13 @@ import { PartialObserver } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgIf } from '@angular/common';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastrar-medico',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgxMaskDirective],
+  providers: [provideNgxMask()],
   templateUrl: './cadastrar-medico.component.html',
 })
 export class CadastrarMedicoComponent {

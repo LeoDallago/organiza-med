@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { provideAuthentication } from './core/auth/auth.provider';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideHttpClient(withInterceptorsFromDi()),
     provideAuthentication(),
+    provideEnvironmentNgxMask(),
   ]
 };

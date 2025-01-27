@@ -16,7 +16,7 @@
 
         <div class="mb-3">
             <label class="form-label">Telefone</label>
-            <input type="tel" class="form-control" formControlName="telefone" data-cy="telefone"
+            <input type="tel" class="form-control" mask="(00) 00000-0000" formControlName="telefone" data-cy="telefone"
                 aria-describedby="telefoneHelp">
             <div id="telefoneHelp" class="form-text">Apenas numeros</div>
             <div *ngIf="telefone?.errors?.['required']" class="form-text">O telefone precisa ser preenchido</div>
@@ -26,7 +26,8 @@
 
         <div class="mb-3">
             <label class="form-label">CPF</label>
-            <input type="text" class="form-control" formControlName="cpf" data-cy="cpf" aria-describedby="cpfHelp">
+            <input type="text" class="form-control" mask="000.000.000-00" formControlName="cpf" data-cy="cpf"
+                aria-describedby="cpfHelp">
             <div id="cpfHelp" class="form-text">Apenas numeros</div>
             <div *ngIf="cpf?.errors?.['required']" class="form-text">O CPF precisa ser preenchido</div>
             <div *ngIf="cpf?.errors?.['maxLength']" class="form-text">O CPF precisa ter ao maximo 11 caracteres</div>
@@ -34,7 +35,7 @@
 
         <div class="mb-3">
             <label class="form-label">CRM</label>
-            <input type="text" formControlName="crm" data-cy="crm" class="form-control">
+            <input type="text" formControlName="crm" mask="00000-SS" data-cy="crm" class="form-control">
             <div *ngIf="crm?.errors?.['required']" class="form-text">O CRM precisa ser preenchido</div>
             <div *ngIf="crm?.errors?.['maxLength']" class="form-text">O CRM precisa ter ao maximo 7S caracteres</div>
         </div>

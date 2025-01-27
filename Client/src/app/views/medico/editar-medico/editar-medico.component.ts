@@ -6,11 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { PartialObserver } from 'rxjs';
 import { MedicoService } from '../services/medico.service';
 import { NgIf } from '@angular/common';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-editar-medico',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, RouterLink],
+  imports: [ReactiveFormsModule, NgIf, RouterLink, NgxMaskDirective],
+  providers: [provideNgxMask()],
   templateUrl: './editar-medico.component.html',
 })
 export class EditarMedicoComponent implements OnInit {
