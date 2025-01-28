@@ -3,15 +3,17 @@ import { VisualizarMedicoViewModel } from '../models/medico.model';
 import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { MedicoService } from '../services/medico.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-excluir-medico',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgxMaskPipe],
+  providers: [provideNgxMask()],
   templateUrl: './excluir-medico.component.html',
 })
 export class ExcluirMedicoComponent implements OnInit {
-  detalhesMedico?: VisualizarMedicoViewModel;
+  detalhesMedico!: VisualizarMedicoViewModel;
 
 
   constructor(

@@ -1,12 +1,12 @@
 <div class="container">
-    <h1 class="fs-2 mt-2 mb-4">Deseja excluir <span class="fw-bold">{{detalhesMedico?.nome}}</span> ?</h1>
+    <h1 class="fs-2 mt-2 mb-4">Deseja excluir <span class="fw-bold">{{detalhesMedico.nome}}</span> ?</h1>
 
     <div class="card col-6">
         <div class="card-body">
-            <div class="card-title fw-semibold">{{detalhesMedico?.nome}}</div>
-            <div class="card-text">Telefone: {{detalhesMedico?.telefone}}</div>
-            <div class="card-text">CPF: {{detalhesMedico?.cpf}}</div>
-            <div class="card-text">CRM: {{detalhesMedico?.crm}}</div>
+            <div class="card-text">Telefone: <strong>{{detalhesMedico.telefone | mask: '(00) 00000-0000'}}</strong>
+            </div>
+            <div class="card-text">CPF: <strong>{{detalhesMedico.cpf | mask: '000.000.000-99'}}</strong></div>
+            <div class="card-text">CRM: <strong>{{detalhesMedico.crm | mask: '00000-SS"'}}</strong></div>
         </div>
 
         <div class="card-body">

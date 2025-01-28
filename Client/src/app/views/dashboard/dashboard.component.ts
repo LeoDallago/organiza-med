@@ -3,6 +3,7 @@ import { ListarAtendimentoViewModel } from '../atendimento/models/atendimento.mo
 import { AtendimentoService } from '../atendimento/services/atendimento.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-dashboard',
